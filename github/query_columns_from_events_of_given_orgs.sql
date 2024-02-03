@@ -1,4 +1,4 @@
--- 查询指定组织的所有事件的以下字段：
+-- 查询指定组织的所有事件（只包含与 Issue、PR 相关的 4 种类型）的以下字段：
 
 -- <所有 payload 都有的通用字段>
 -- id
@@ -51,4 +51,5 @@ select id, type, action, actor_id, actor_login, repo_id, repo_name, org_id, org_
        pull_merged, pull_merged_at, pull_merged_by_id, pull_merged_by_login,
        pull_review_id, pull_review_comment_id, pull_review_comment_author_id, pull_review_comment_author_login, pull_review_comment_created_at, pull_review_comment_updated_at
 from github_events
-where org_login in ('X-lab2017', 'hypertrons');
+where type in ('IssuesEvent', 'IssueCommentEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent')
+    and org_login in ('X-lab2017', 'hypertrons');
