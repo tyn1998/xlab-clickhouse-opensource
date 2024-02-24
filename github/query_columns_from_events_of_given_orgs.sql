@@ -50,6 +50,8 @@ select id, type, action, actor_id, actor_login, repo_id, repo_name, org_id, org_
        issue_comment_id, issue_comment_created_at, issue_comment_updated_at, issue_comment_author_id, issue_comment_author_login,
        pull_merged, pull_merged_at, pull_merged_by_id, pull_merged_by_login,
        pull_review_id, pull_review_comment_id, pull_review_comment_author_id, pull_review_comment_author_login, pull_review_comment_created_at, pull_review_comment_updated_at
+-- select count(*)
 from github_events
 where type in ('IssuesEvent', 'IssueCommentEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent')
-    and org_login in ('X-lab2017', 'hypertrons');
+    and org_login in ('X-lab2017', 'hypertrons')
+    and created_at > '2023-01-01' and created_at < '2023-02-01';
